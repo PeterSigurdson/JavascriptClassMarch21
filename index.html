@@ -1,19 +1,27 @@
 <html>
-<head>
+<head> <title>Welcome to the World of Ajax!</title>
 <script>
-    function changeContent(){
-        var theDiv = document.getElementById("content");
-        theDiv.innerHTML = "<h1>Soon it will be Summer!  Happy!!</h1>";
+    var xmlhttp;
+    function getNum(){
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = callback;
+    }
+    // when information comes back from the Server
+    function callback(){
+        if(xmlhttp.readyState==4 && xmlhttp.status=200){
+            document.getElementById('result').innerHTML = xmlhttp.responseText;
+        }
     }
 </script>
 </head>
 
 <body>
-    <div id='content'>
-        <p>Happy First Day of Spring!!!!</p>
-
+    <div id='result'>
     </div>
-    <input type="button" value="Change Content" onclick="changeContent()"/>
+
+    <input type="button" value="Get Random Number" 
+    onclick="getNum()" />
+
 </body>
 
 </html>
